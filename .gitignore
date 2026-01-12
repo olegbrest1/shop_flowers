@@ -4,32 +4,43 @@
 # belong in git's global ignore instead:
 # `$XDG_CONFIG_HOME/git/ignore` or `~/.config/git/ignore`
 
-# Ignore bundler config.
+# Bundler
 /.bundle
 
-# Ignore all environment files.
+# Environment files
 /.env*
+/config/master.key
 
-# Ignore all logfiles and tempfiles.
+# Logs and temp files
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
 
-# Ignore pidfiles, but keep the directory.
+# PIDs
 /tmp/pids/*
 !/tmp/pids/
 !/tmp/pids/.keep
 
-# Ignore storage (uploaded files in development and any SQLite databases).
+# Active Storage
 /storage/*
 !/storage/.keep
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
 
+# Assets
 /public/assets
 
-# Ignore key files for decrypting credentials and more.
+# Database dumps
+/db/*.sql
+/db/*.dump
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+
+# Key files for credentials
 /config/*.key
 
