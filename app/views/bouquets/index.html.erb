@@ -1,0 +1,31 @@
+<h1>Букеты</h1>
+
+<%= link_to "Добавить букет", new_bouquet_path %>
+
+<table>
+  <tr>
+    <th>Фото</th>
+    <th>Название</th>
+    <th>Цена</th>
+    <th></th>
+  </tr>
+
+  <% @bouquets.each do |bouquet| %>
+    <tr>
+      <td>
+        <% if bouquet.photo.attached? %>
+          <%= image_tag bouquet.photo.variant(resize_to_limit: [100, 100]) %>
+        <% end %>
+      </td>
+      <td><%= bouquet.name %></td>
+      <td><%= bouquet.price %></td>
+      <td>
+        <%= link_to "Открыть", bouquet %> |
+        <%= link_to "Изменить", edit_bouquet_path(bouquet) %> |
+        <%= button_to "Удалить", bouquet,
+              method: :delete,
+              data: { turbo_confirm: "Удалить?" } %>
+      </td>
+    </tr>
+  <% end %>
+</table>

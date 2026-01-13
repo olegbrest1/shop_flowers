@@ -1,0 +1,42 @@
+<%= form_with(model: bouquet) do |f| %>
+
+  <% if bouquet.errors.any? %>
+    <ul>
+      <% bouquet.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <div>
+    <%= f.label :price %><br>
+    <%= f.number_field :price, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= f.label :available %>
+    <%= f.check_box :available %>
+  </div>
+
+  <div>
+    <%= f.label :photo %><br>
+    <%= f.file_field :photo %>
+  </div>
+
+  <% if bouquet.persisted? && bouquet.photo.attached? %>
+    <p>Текущее фото:</p>
+    <%= image_tag bouquet.photo.variant(resize_to_limit: [300, 300]) %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>

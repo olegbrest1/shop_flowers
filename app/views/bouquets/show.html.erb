@@ -1,0 +1,12 @@
+<h1><%= @bouquet.name %></h1>
+
+<% if @bouquet.photo.attached? %>
+  <%= image_tag @bouquet.photo.variant(resize_to_limit: [500, 500]) %>
+<% end %>
+
+<p><strong>Описание:</strong> <%= @bouquet.description %></p>
+<p><strong>Цена:</strong> <%= @bouquet.price %></p>
+<p><strong>Доступен:</strong> <%= @bouquet.available ? "Да" : "Нет" %></p>
+
+<%= link_to "Редактировать", edit_bouquet_path(@bouquet) %> |
+<%= link_to "Назад", bouquets_path %>
